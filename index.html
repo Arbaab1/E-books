@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Student Rasoi – 49 Recipes E-book Store</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Hind:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+    --bg: #fffdfa;
+    --tint: #fbf8f3;
+    --surf: #ffffff;
+    --ink: #2c2520;
+    --mut: #63584e;
+    --line: #eae2d6;
+    --g: #2f7d5b;
+    --g2: #256849;
+    --gs: #e3f1ea;
+    --y: #f6b73c;
+    --ys: #fff6e0;
+    --on-g: #ffffff;
+    --cream-accent: #f4eee4;
+    --danger: #d9534f;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.7 Hind,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;line-height:1.15;margin:0;font-weight:700;letter-spacing:-.01em}
+h3{font-size:22px}p{margin:0}img{max-width:100%;display:block}button{font:inherit;cursor:pointer}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:100;background:var(--bg);border-bottom:1px solid var(--line);box-shadow:0 2px 10px rgba(0,0,0,0.02)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:76px}
+.brand{font:700 24px Fraunces,Georgia,serif;color:var(--ink);background:none;border:0;padding:0;cursor:pointer}
+.nav-links{display:flex;gap:20px;align-items:center;}
+.nav-btn{background:none;border:none;font-weight:600;font-size:16px;color:var(--mut);cursor:pointer;padding:6px 12px;border-radius:8px;transition:0.2s;}
+.nav-btn:hover{color:var(--g);background:var(--gs);}
+.cartp{display:none;border:1.5px solid var(--g);color:var(--g);background:var(--gs);border-radius:99px;padding:8px 18px;font-weight:600;font-size:15px}.cartp.on{display:block}
+
+.btn{display:inline-block;border:0;border-radius:12px;padding:16px 32px;font-weight:600;font-size:18px;background:var(--g);color:var(--on-g);transition:transform .15s,background .15s;text-align:center;text-decoration:none;box-shadow:0 4px 14px rgba(47,125,91,0.25)}
+.btn:hover{background:var(--g2);transform:translateY(-1px)}.btn:active{transform:scale(.98)}
+.btn.o{background:var(--surf);color:var(--g);border:1.5px solid var(--g);box-shadow:none}.btn.o:hover{background:var(--gs)}
+.btn.drive{background:#1a73e8;color:#fff;display:inline-flex;align-items:center;justify-content:center;gap:10px}
+.btn.drive:hover{background:#1557b0}
+.btn.share{background:#25D366;color:#fff;display:inline-flex;align-items:center;justify-content:center;gap:10px}
+.btn.share:hover{background:#1eaa53}
+
+:focus-visible{outline:3px solid var(--y);outline-offset:3px}
+.page{display:none}.page.on{display:block}
+
+/* Countdown Banner */
+.countdown-banner{background:var(--ink);color:#fff;text-align:center;padding:10px 15px;font-size:15px;font-weight:500;display:flex;justify-content:center;align-items:center;gap:15px;flex-wrap:wrap;}
+.timer-box{background:rgba(255,255,255,0.15);padding:2px 8px;border-radius:6px;font-weight:700;font-family:monospace;letter-spacing:1px;color:var(--y);}
+
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center;padding:60px 0 70px}
+.pill{display:inline-block;background:var(--cream-accent);color:var(--ink);font-weight:600;font-size:15px;padding:6px 16px;border-radius:99px;margin-bottom:18px}
+.hero h1{font-size:clamp(38px,5.2vw,60px)}
+.hero .lead{font-size:20px;color:var(--mut);max-width:32em;margin:20px 0 24px}
+
+.price{display:flex;align-items:baseline;gap:14px;margin-bottom:24px;flex-wrap:wrap;}
+.price b{font:700 46px Fraunces,serif;color:var(--g)}
+.price del{font-size:26px;color:#a09385;text-decoration:line-through;margin-right:6px;}
+.price span{color:var(--mut);font-size:16px}
+.discount-tag{background:var(--ys);border:1px dashed var(--y);color:#8a5a00;font-weight:600;font-size:14px;padding:6px 14px;border-radius:8px;display:inline-block;margin-bottom:16px;}
+
+.cta{display:flex;gap:16px;flex-wrap:wrap}
+.trust{display:flex;gap:10px 24px;flex-wrap:wrap;margin-top:26px;color:var(--mut);font-size:15px}
+.trust span:before{content:"✓ ";color:var(--g);font-weight:700}
+.book{justify-self:center;width:min(100%,380px);background:none;border:0;padding:0;transition:transform .25s}
+.book:hover{transform:translateY(-6px)}
+.book img{width:100%;height:auto;border-radius:12px;box-shadow:0 20px 40px rgba(31,43,36,0.15)}
+
+/* Rich Store Grid Section */
+.store-section{padding:70px 0;background:var(--tint);}
+.section-title{text-align:center;margin-bottom:50px;}
+.section-title h2{font-size:38px;margin-bottom:12px;}
+.section-title p{color:var(--mut);font-size:18px;}
+.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,320px));justify-content:center;gap:30px;}
+.product-card{background:var(--surf);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,0.03);transition:transform 0.2s,box-shadow 0.2s;display:flex;flex-direction:column;}
+.product-card:hover{transform:translateY(-5px);box-shadow:0 15px 35px rgba(0,0,0,0.08);}
+.product-card img{width:100%;height:280px;object-fit:cover;cursor:pointer;}
+.product-card-body{padding:20px;display:flex;flex-direction:column;flex:1;}
+.product-card-title{font-size:20px;font-weight:700;margin-bottom:8px;cursor:pointer;color:var(--ink);}
+.product-card-title:hover{color:var(--g);}
+.product-card-desc{color:var(--mut);font-size:15px;margin-bottom:16px;flex:1;}
+.product-card-footer{display:flex;align-items:center;justify-content:space-between;margin-top:auto;border-top:1px solid var(--line);padding-top:16px;}
+.product-card-footer b{font-size:22px;color:var(--g);font-family:Fraunces,serif;}
+
+/* FAQ Section */
+.faq-section{padding:80px 0;background:var(--surf);border-top:1px solid var(--line);}
+.faq-container{max-width:800px;margin:0 auto;}
+.faq-item{background:var(--tint);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;padding:20px 24px;}
+.faq-item h4{font-size:18px;margin-bottom:8px;font-family:Fraunces,serif;color:var(--ink);}
+.faq-item p{color:var(--mut);font-size:16px;}
+
+footer{border-top:1px solid var(--line);padding:40px 0;font-size:15px;text-align:center;color:var(--mut);background:var(--tint)}
+.back{background:none;border:0;color:var(--g);font-weight:600;padding:24px 0 8px;cursor:pointer;font-size:16px;}
+
+.prod{display:grid;grid-template-columns:.8fr 1.2fr;gap:60px;padding:30px 0 80px}
+.prod .cv img{border-radius:12px;box-shadow:0 20px 40px rgba(31,43,36,0.12);position:sticky;top:100px;width:100%}
+.prod h1{font-size:clamp(32px,4.5vw,50px)}.prod .sub{color:var(--mut);margin:10px 0 20px}
+.list{list-style:none;margin:28px 0 32px;padding:0;display:grid;gap:20px}
+.list li{padding-left:44px;position:relative}.list li b{display:block;font-size:18px}.list li span{color:var(--mut);font-size:15px}
+.list li:before{content:"✓";position:absolute;left:0;top:2px;width:30px;height:30px;border-radius:50%;background:var(--gs);color:var(--g);display:grid;place-items:center;font-weight:700;font-size:14px}
+.for{background:var(--tint);border-radius:14px;padding:22px 24px;margin-bottom:28px;border:1px solid var(--line)}.for h3{font-size:20px;margin-bottom:6px}.for p{color:var(--mut);font-size:15px}
+.nr{background:var(--ys);border:1px solid #f1d9a0;border-radius:12px;padding:15px 18px;margin-top:22px;font-size:16px}
+.nr b{color:#8a5a00}
+
+/* Demo Slider */
+.demo-slider{margin-top:30px;background:var(--tint);border:1px solid var(--line);border-radius:14px;padding:20px;text-align:center;}
+.demo-slider h3{margin-bottom:12px;font-size:18px;}
+.slides-container{position:relative;max-width:280px;margin:0 auto;overflow:hidden;border-radius:8px;box-shadow:0 6px 16px rgba(0,0,0,0.08);}
+.slide-item{display:none;width:100%;height:auto;}
+.slide-item.active{display:block;}
+.slider-btns{margin-top:12px;display:flex;justify-content:center;gap:10px;}
+.slider-btns button{background:var(--g);color:#fff;border:0;padding:6px 14px;border-radius:6px;font-weight:600;font-size:14px;}
+
+/* Checkout & Secure Payment Styles */
+.co{max-width:620px;margin:0 auto;padding:40px 0 80px}
+.steps{display:flex;gap:10px;margin-bottom:28px;font-size:15px;color:var(--mut)}
+.steps span{flex:1;padding-top:8px;border-top:4px solid var(--line)}.steps .a{border-color:var(--y);color:var(--ink);font-weight:600}.steps .d{border-color:var(--g)}
+.co h2{font-size:32px;margin-bottom:8px}.co .sub{color:var(--mut);margin:0 0 24px;font-size:16px}
+.f{margin-bottom:20px}.f label{display:block;font-weight:600;font-size:16px;margin-bottom:6px}
+.f input, .f select{width:100%;padding:15px;font:inherit;border:1.5px solid var(--line);border-radius:12px;background:var(--surf);color:var(--ink)}
+.f input:focus, .f select:focus{outline:0;border-color:var(--g);box-shadow:0 0 0 4px var(--gs)}
+.f.bad input{border-color:var(--danger)}.err{display:none;color:var(--danger);font-size:14px;margin-top:4px}.f.bad .err{display:block}
+
+.sum{display:flex;justify-content:space-between;align-items:center;background:var(--tint);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin-bottom:14px}
+.discount-box{background:var(--ys);border:1px dashed var(--y);border-radius:12px;padding:16px;margin-bottom:24px;text-align:center;}
+.qr{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px;margin:0 auto 20px;max-width:300px;box-shadow:0 6px 18px rgba(0,0,0,0.04)}.qr img{border-radius:8px;width:100%;height:auto}
+.hint{font-size:15px;color:var(--mut);background:var(--tint);border:1px solid var(--line);padding:14px 16px;border-radius:10px;margin-bottom:24px}
+.center{text-align:center}.big{display:grid;place-items:center;padding:80px 0}
+.pr{height:10px;background:var(--line);border-radius:99px;overflow:hidden;margin:24px auto 14px;max-width:360px}.pr i{display:block;height:100%;width:0;background:var(--g)}
+.spin{width:54px;height:54px;border:5px solid var(--line);border-top-color:var(--g);border-radius:50%;animation:s 1s linear infinite;margin:0 auto 20px}@keyframes s{to{transform:rotate(360deg)}}
+.ok{width:80px;height:80px;border-radius:50%;background:var(--g);margin:0 auto 20px;position:relative;animation:pop .45s cubic-bezier(.2,1.4,.4,1)}
+.ok:after{content:"";position:absolute;left:26px;top:20px;width:24px;height:13px;border-left:5px solid var(--on-g);border-bottom:5px solid var(--on-g);transform:rotate(-45deg)}
+@keyframes pop{from{transform:scale(.3);opacity:0}}
+
+/* Security Badge */
+.security-badge{display:flex;align-items:center;justify-content:center;gap:8px;font-size:14px;color:var(--mut);margin-top:16px;background:var(--tint);padding:10px;border-radius:8px;border:1px solid var(--line);}
+
+@media(max-width:800px){body{font-size:16px}.wrap{padding:0 20px}.hero,.prod{grid-template-columns:1fr;gap:35px}.hero{padding:40px 0 50px}.book{order:-1;width:min(75%,300px)}.prod .cv img{position:static;max-width:240px;margin:0 auto}.btn{width:100%}.cta{flex-direction:column}}
+</style>
+</head>
+<body>
+
+<!-- Countdown Live Banner -->
+<div class="countdown-banner">
+  <span>⚡ MEGA LAUNCH OFFER ENDING SOON:</span>
+  <div style="display:flex; gap:6px; align-items:center;">
+    <span class="timer-box" id="hours">04</span>h :
+    <span class="timer-box" id="mins">35</span>m :
+    <span class="timer-box" id="secs">50</span>s
+  </div>
+  <span>| Extra ₹10 OFF via WhatsApp Share!</span>
+</div>
+
+<header>
+  <div class="wrap bar">
+    <button class="brand" onclick="go('home')">The Student Rasoi</button>
+    <div class="nav-links">
+      <button class="nav-btn" onclick="go('home')">Home</button>
+      <button class="nav-btn" onclick="go('store')">E-book Store</button>
+      <button class="cartp" id="cartp" onclick="go('details')">Cart · ₹<span id="cart-price-tag">49</span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- HOME / LANDING PAGE -->
+<section class="page on" id="home">
+<div class="wrap">
+  <div class="hero">
+    <div>
+      <span class="pill">Best Seller · PDF format</span>
+      <h1>Ghar ka khana banana ab hoga aasaan</h1>
+      <p class="lead">49 simple recipes jo kam budget, kam saaman aur kam time mein ban jati hain. Har recipe ₹100 se kam mein aur 45 minute ya usse kam mein ready.</p>
+
+      <div class="discount-tag">🔥 Special Offer: Share on WhatsApp to get Instant ₹10 OFF!</div>
+      <div class="price">
+          <del>₹49</del><b>₹39</b><span>Introductory price · Limited Time</span>
+      </div>
+
+      <div class="cta">
+        <button class="btn" onclick="buyNow()">Abhi kharidein</button>
+        <button class="btn o" onclick="go('product')">Book ki details dekhein</button>
+      </div>
+
+      <div class="trust">
+        <span>Step-by-step recipes</span>
+        <span>Student Friendly</span>
+        <span>Instant Google Drive Delivery</span>
+      </div>
+    </div>
+    
+    <button class="book" onclick="go('product')" aria-label="Book ki details dekhein">
+      <img src="imagescover.jpg" alt="The Student Rasoi Cover" onerror="this.src='https://images.unsplash.com/photo-1543353071-10c8ba85a904?auto=format&fit=crop&w=600&q=80'">
+    </button>
+  </div>
+</div>
+
+<!-- RICH STORE PREVIEW SECTION ON HOME -->
+<section class="store-section">
+  <div class="wrap">
+    <div class="section-title">
+      <h2>Featured Student E-books</h2>
+      <p>Handcrafted digital guides to make student & bachelor life easier.</p>
+    </div>
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="imagescover.jpg" alt="The Student Rasoi E-book" onclick="go('product')" onerror="this.src='https://images.unsplash.com/photo-1543353071-10c8ba85a904?auto=format&fit=crop&w=500&q=80'">
+        <div class="product-card-body">
+          <h3 class="product-card-title" onclick="go('product')">The Student Rasoi – 49 Recipes</h3>
+          <p class="product-card-desc">49 quick, budget-friendly recipes designed specially for students and bachelors.</p>
+          <div class="product-card-footer">
+            <div><del style="color:var(--mut); font-size:14px; margin-right:4px;">₹49</del><b>₹39</b></div>
+            <button class="btn" style="padding:10px 18px; font-size:15px;" onclick="go('product')">View Book</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ SECTION ON HOME -->
+<section class="faq-section">
+  <div class="wrap">
+    <div class="section-title">
+      <h2>Frequently Asked Questions</h2>
+      <p>Got questions? We have answers.</p>
+    </div>
+    <div class="faq-container">
+      <div class="faq-item">
+        <h4>1. Payment ke baad e-book kaise milegi?</h4>
+        <p>Payment aur UTR verification ke turant baad aapko screen par aur Email par Google Drive ka direct download link mil jayega.</p>
+      </div>
+      <div class="faq-item">
+        <h4>2. Kya ye recipes beginners ke liye aasan hain?</h4>
+        <p>Haan! Sabhi 49 recipes bohot hi simple step-by-step instructions ke sath hain jo koi bhi pehli baar me bana sakta hai.</p>
+      </div>
+      <div class="faq-item">
+        <h4>3. Kya ingredients aasani se mil jate hain?</h4>
+        <p>Bilkul, saare ingredients aapke local market ya aaspas ki dukaano par easily milne wale basic items hain.</p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+</section>
+
+<!-- STORE PAGE (Dedicated page listing books) -->
+<section class="page" id="store">
+<div class="wrap" style="padding:60px 0;">
+  <button class="back" onclick="go('home')">← Back to Home</button>
+  <div class="section-title" style="margin-top:20px;">
+    <h2>The Student Rasoi Store</h2>
+    <p>Browse our exclusive e-book collection.</p>
+  </div>
+  <div class="product-grid">
+    <div class="product-card">
+      <img src="imagescover.jpg" alt="The Student Rasoi E-book" onclick="go('product')" onerror="this.src='https://images.unsplash.com/photo-1543353071-10c8ba85a904?auto=format&fit=crop&w=500&q=80'">
+      <div class="product-card-body">
+        <h3 class="product-card-title" onclick="go('product')">The Student Rasoi – 49 Recipes</h3>
+        <p class="product-card-desc">Format: PDF | 49 Quick Meals | Budget friendly under ₹100.</p>
+        <div class="product-card-footer">
+          <div><del style="color:var(--mut); font-size:14px; margin-right:4px;">₹49</del><b>₹39</b></div>
+          <button class="btn" style="padding:10px 18px; font-size:15px;" onclick="go('product')">Buy Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- PRODUCT DETAILS PAGE -->
+<section class="page" id="product">
+<div class="wrap">
+  <button class="back" onclick="go('home')">← Back to Home</button>
+  <div class="prod">
+    <div class="cv">
+      <img src="imagescover.jpg" alt="The Student Rasoi Cover" onerror="this.src='https://images.unsplash.com/photo-1543353071-10c8ba85a904?auto=format&fit=crop&w=600&q=80'">
+    </div>
+    <div>
+      <h1>The Student Rasoi – 49 Recipes E-book</h1>
+      <p class="sub">By The Student Rasoi Team</p>
+
+      <div class="discount-tag">🎁 Instant Discount Available at Checkout</div>
+      <div class="price"><del>₹49</del><b>₹39</b><span>Special Offer Price</span></div>
+      <button class="btn" onclick="buyNow()">Abhi kharidein (₹39)</button>
+
+      <div class="nr">
+        <b>Note:</b> Yah e-book PDF format mein hai. Payment ke baad aapko <b>Google Drive & Email</b> par direct download link mil jayegi.
+      </div>
+
+      <ul class="list">
+        <li><b>49 Easy Recipes</b><span>North Indian, South Indian, Snacks aur Desserts.</span></li>
+        <li><b>Kam Budget</b><span>Har recipe ₹100 se kam me ban jati hai.</span></li>
+        <li><b>Jaldi Banne Wali</b><span>Sabhi recipes 45 minute ya usse kam me ready.</span></li>
+        <li><b>Basic Saaman</b><span>Ghar aur local market me aasaan se milne wale ingredients.</span></li>
+      </ul>
+
+      <div class="for">
+        <h3>Kiske liye hai ye book?</h3>
+        <p>Student Friendly - Sabhi students, beginners, bachelors aur har wo insaan jo kam kharch aur kam time me tasty ghar ka khana banana chahta hai.</p>
+      </div>
+
+      <!-- Demo Slider Section -->
+      <div class="demo-slider">
+        <h3>Book ke Demo Pages</h3>
+        <div class="slides-container">
+          <img src="demo1.jpg" class="slide-item active" alt="Demo Page 1" onerror="this.src='https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=500&q=80'">
+          <img src="demo2.jpg" class="slide-item" alt="Demo Page 2" onerror="this.src='https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=500&q=80'">
+        </div>
+        <div class="slider-btns">
+          <button onclick="prevSlide()">❮ Prev</button>
+          <button onclick="nextSlide()">Next ❯</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- CUSTOMER DETAILS CHECKOUT PAGE -->
+<section class="page" id="details">
+<div class="wrap co">
+  <button class="back" onclick="go('home')">← Back to Home</button>
+  <div class="steps"><span class="a">1. Details</span><span>2. Payment</span><span>3. Download</span></div>
+  <h2>Customer Details</h2>
+  <p class="sub">Your E-book download link and receipt will be sent securely to your email.</p>
+
+  <form id="detailsForm" onsubmit="submitDetails(event)">
+    <div class="f"><label for="f-name">Full Name *</label><input type="text" id="f-name" required placeholder="Ex. Rahul Sharma"><span class="err">Please enter your full name.</span></div>
+    <div class="f"><label for="f-phone">Mobile Number *</label><input type="tel" id="f-phone" required pattern="[0-9]{10}" placeholder="10-digit mobile number"><span class="err">Please enter a valid 10-digit mobile number.</span></div>
+    <div class="f"><label for="f-email">Email Address *</label><input type="email" id="f-email" required placeholder="name@example.com"><span class="err">Please enter a valid email address.</span></div>
+
+    <div class="sum">
+      <span>The Student Rasoi E-book (PDF)</span>
+      <div style="text-align:right;">
+        <span id="strike-price-wrap" style="color:var(--mut); text-decoration:line-through; font-size:16px; margin-right:8px;">₹49</span>
+        <b style="font-size:22px; color:var(--g);">₹<span id="display-price">49</span></b>
+      </div>
+    </div>
+
+    <!-- WhatsApp Share Discount Box -->
+    <div class="discount-box" id="discount-box-wrap">
+      <p style="font-weight:600; margin-bottom:8px; color:var(--ink);">Share with 3 friends on WhatsApp to get instant ₹10 discount!</p>
+      <button type="button" class="btn share" onclick="verifyWhatsAppShare()" style="padding:10px 20px; font-size:15px; width:auto;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-1.099 4.019 4.142-1.086z"/></svg>
+        Share on WhatsApp
+      </button>
+      <p id="discount-msg" style="font-size:14px; color:var(--mut); margin-top:8px;">Click to share on WhatsApp and unlock ₹10 OFF instantly.</p>
+    </div>
+
+    <button type="submit" class="btn" style="width:100%">Proceed to Secure Payment →</button>
+  </form>
+</div>
+</section>
+
+<!-- SECURE PAYMENT PAGE -->
+<section class="page" id="pay">
+<div class="wrap co">
+  <button class="back" onclick="go('details')">← Back</button>
+  <div class="steps"><span class="d">1. Details</span><span class="a">2. Payment</span><span>3. Download</span></div>
+  <h2>Complete Secure Payment</h2>
+  <p class="sub">Scan the UPI QR code below to pay ₹<span id="pay-final-amount">49</span> securely. Anti-fraud system active.</p>
+
+  <div class="qr">
+    <img id="qr-image" src="Paymentqr.jpg" alt="Payment QR Code" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=upi://pay?pa=studentrasoi@upi&pn=StudentRasoi&am=' + bookPrice + '&cu=INR'">
+  </div>
+
+  <p class="hint center">After making the payment, please enter your valid 12-digit UTR / Transaction ID and upload the clear payment screenshot below.</p>
+
+  <form id="payForm" onsubmit="submitPayment(event)">
+    <div class="f">
+      <label for="f-utr">UTR / Transaction ID *</label>
+      <input type="text" id="f-utr" required placeholder="Enter valid 12-digit UTR or Transaction ID">
+      <span class="err">Please enter a valid UTR/Transaction ID for verification.</span>
+    </div>
+
+    <div class="f">
+      <label for="f-ss">Payment Screenshot Upload *</label>
+      <input type="file" id="f-ss" accept="image/*" required>
+      <span class="err">Valid payment screenshot upload is mandatory.</span>
+    </div>
+
+    <div class="security-badge">
+      🔒 256-bit Secure Encryption · Anti-Fraud Protected
+    </div>
+
+    <button type="submit" class="btn" style="width:100%; margin-top:16px;">Verify Payment & Get E-book →</button>
+  </form>
+</div>
+</section>
+
+<!-- VERIFYING SPINNER PAGE (12-15 SECONDS) -->
+<section class="page" id="verifying">
+<div class="wrap big center">
+  <div class="spin"></div>
+  <h2>Verifying Your Payment Securely...</h2>
+  <p style="color:var(--mut);margin-top:10px">Please wait 12-15 seconds while our automated system validates your UTR and screenshot. Do not refresh.</p>
+  <div class="pr"><i id="bar"></i></div>
+</div>
+</section>
+
+<!-- SUCCESS & DRIVE DOWNLOAD PAGE -->
+<section class="page" id="success">
+<div class="wrap co center">
+  <div class="ok"></div>
+  <h2>Payment Verified Successfully!</h2>
+  <p class="sub" style="margin-top:10px">Your E-book is ready for instant download via Google Drive.</p>
+
+  <div style="background:var(--tint);border:1px solid var(--line);border-radius:16px;padding:30px;margin:30px 0;">
+    <h3>The Student Rasoi – 49 Recipes E-book</h3>
+    <p style="color:var(--mut);margin:10px 0 20px;">Format: PDF · Size: 12 MB · Secure Access</p>
+
+    <div style="display:flex;flex-direction:column;gap:15px;">
+      <a href="https://drive.google.com/file/d/1CPaUWU8VbX4yRX_6p5HEV3dUnARpLA5E/view?usp=drivesdk" class="btn drive" target="_blank">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM19 18H6c-2.21 0-4-1.79-4-4 0-2.05 1.53-3.76 3.56-3.97l1.07-.11.5-.95C8.08 7.14 9.94 6 12 6c2.62 0 4.88 1.86 5.39 4.43l.3 1.5 1.53.11c1.56.1 2.78 1.41 2.78 2.96 0 1.65-1.35 3-3 3zM8 13h2.55v3h2.9v-3H16l-4-4-4 4z"/></svg>
+        Download via Google Drive
+      </a>
+      <button class="btn share" onclick="sharePage()">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
+        Share with Friends
+      </button>
+    </div>
+  </div>
+</div>
+</section>
+
+</main>
+
+<footer>
+<div class="wrap">
+  <p>© 2026 The Student Rasoi. All rights reserved. Secure Digital Store.</p>
+</div>
+</footer>
+
+<script>
+let bookPrice = 49;
+let isDiscountApplied = false;
+
+function go(id){
+    document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
+    document.getElementById(id).classList.add('on');
+    window.scrollTo(0,0);
+    const cart = document.getElementById('cartp');
+    if(id==='home' || id==='store'){cart.classList.remove('on');}else{cart.classList.add('on');}
+}
+
+function buyNow(){
+    go('details');
+}
+
+function verifyWhatsAppShare(){
+    if(!isDiscountApplied){
+        let shareText = encodeURIComponent("Hey! Check out this amazing student-friendly 49 Recipes E-book for just ₹39: " + window.location.href);
+        window.open("https://api.whatsapp.com/send?text=" + shareText, "_blank");
+
+        setTimeout(() => {
+            isDiscountApplied = true;
+            bookPrice = 39;
+            document.getElementById('display-price').innerText = '39';
+            document.getElementById('cart-price-tag').innerText = '39';
+            document.getElementById('pay-final-amount').innerText = '39';
+            
+            let box = document.getElementById('discount-box-wrap');
+            box.style.background = '#e3f1ea';
+            box.style.borderColor = '#2f7d5b';
+            box.innerHTML = '<p style="font-weight:600; color:#2f7d5b; margin:0;">🎉 Success! ₹10 discount unlocked successfully. Total Amount: ₹39</p>';
+        }, 1500);
+    }
+}
+
+function submitDetails(e){
+    e.preventDefault();
+    go('pay');
+}
+
+function submitPayment(e){
+    e.preventDefault();
+    go('verifying');
+    let b = document.getElementById('bar');
+    let w = 0;
+    // Exactly 12 to 15 seconds secure verification timer
+    let t = setInterval(()=>{
+        w += 6.5;
+        b.style.width = w + '%';
+        if(w >= 100){
+            clearInterval(t);
+            go('success');
+        }
+    }, 900);
+}
+
+function sharePage(){
+    if(navigator.share){
+        navigator.share({
+            title: 'The Student Rasoi E-book',
+            text: 'Check out this amazing 49 recipes student-friendly e-book!',
+            url: window.location.href
+        }).catch(err => console.log('Error sharing:', err));
+    } else {
+        alert('Link copied to clipboard!');
+    }
+}
+
+/* Demo Slider Logic */
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slide-item');
+
+function showSlide(index) {
+    slides.forEach((slide, i) => {
+        slide.classList.remove('active');
+        if(i === index) {
+            slide.classList.add('active');
+        }
+    });
+}
+
+function nextSlide() {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+}
+
+function prevSlide() {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    showSlide(currentSlide);
+}
+
+/* Live Countdown Timer Script */
+let totalSeconds = 4 * 3600 + 35 * 60 + 50;
+setInterval(() => {
+    if(totalSeconds > 0) totalSeconds--;
+    let h = Math.floor(totalSeconds / 3600);
+    let m = Math.floor((totalSeconds % 3600) / 60);
+    let s = totalSeconds % 60;
+    document.getElementById('hours').innerText = String(h).padStart(2, '0');
+    document.getElementById('mins').innerText = String(m).padStart(2, '0');
+    document.getElementById('secs').innerText = String(s).padStart(2, '0');
+}, 1000);
+</script>
+</body>
+</html>
