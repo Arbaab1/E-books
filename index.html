@@ -362,8 +362,7 @@ footer{border-top:1px solid var(--line);padding:40px 0;font-size:15px;text-align
   </form>
 </div>
 </section>
-
-<!-- SECURE PAYMENT PAGE -->
+    <!-- SECURE PAYMENT PAGE (Web3Forms Integrated) -->
 <section class="page" id="pay">
 <div class="wrap co">
   <button class="back" onclick="go('details')">← Back</button>
@@ -377,16 +376,26 @@ footer{border-top:1px solid var(--line);padding:40px 0;font-size:15px;text-align
 
   <p class="hint center">After making the payment, please enter your valid 12-digit UTR / Transaction ID and upload the clear payment screenshot below.</p>
 
-  <form id="payForm" onsubmit="submitPayment(event)">
+  <!-- Web3Forms Form Integration -->
+  <form id="payForm" action="https://api.web3forms.com/submit" method="POST" onsubmit="submitPayment(event)">
+    <input type="hidden" name="access_key" value="bfa5d340-4064-4c4c-8d98-e33fd3198f9f">
+    <input type="hidden" name="subject" value="New E-book Order Received - The Student Rasoi">
+    
+    <!-- Hidden fields to capture user inputs dynamically -->
+    <input type="hidden" name="customer_name" id="hidden-name">
+    <input type="hidden" name="customer_phone" id="hidden-phone">
+    <input type="hidden" name="customer_email" id="hidden-email">
+    <input type="hidden" name="final_amount" id="hidden-amount">
+
     <div class="f">
       <label for="f-utr">UTR / Transaction ID *</label>
-      <input type="text" id="f-utr" required placeholder="Enter valid 12-digit UTR or Transaction ID">
+      <input type="text" id="f-utr" name="utr_transaction_id" required placeholder="Enter valid 12-digit UTR or Transaction ID">
       <span class="err">Please enter a valid UTR/Transaction ID for verification.</span>
     </div>
 
     <div class="f">
       <label for="f-ss">Payment Screenshot Upload *</label>
-      <input type="file" id="f-ss" accept="image/*" required>
+      <input type="file" id="f-ss" name="payment_screenshot" accept="image/*" required>
       <span class="err">Valid payment screenshot upload is mandatory.</span>
     </div>
 
@@ -480,14 +489,21 @@ function verifyWhatsAppShare(){
 
 function submitDetails(e){
     e.preventDefault();
+    // Copy user details to hidden Web3Forms inputs
+    document.getElementById('hidden-name').value = document.getElementById('f-name').value;
+    document.getElementById('hidden-phone').value = document.getElementById('f-phone').value;
+    document.getElementById('hidden-email').value = document.getElementById('f-email').value;
+    document.getElementById('hidden-amount').value = '₹' + bookPrice;
+    
     go('pay');
 }
 
 function submitPayment(e){
-    e.preventDefault();
+    // Let Web3Forms submit the form data to email in background, then transition smoothly
     go('verifying');
     let b = document.getElementById('bar');
     let w = 0;
+    
     // Exactly 12 to 15 seconds secure verification timer
     let t = setInterval(()=>{
         w += 6.5;
@@ -548,3 +564,4 @@ setInterval(() => {
 </script>
 </body>
 </html>
+                    
