@@ -587,9 +587,11 @@ setInterval(() => {
             document.body.appendChild(a);
             a.click();
             a.remove();
-        } else {
-            alert('Something went wrong. Please check your UTR or contact support.');
+            } else {
+            const result = await response.json();
+            alert(result.error || 'This UTR has already been used or is invalid.');
         }
+        
     } catch (error) {
         console.error('Error:', error);
         alert('Server error. Please try again in a few seconds.');
