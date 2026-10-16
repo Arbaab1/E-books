@@ -561,6 +561,41 @@ setInterval(() => {
     document.getElementById('mins').innerText = String(m).padStart(2, '0');
     document.getElementById('secs').innerText = String(s).padStart(2, '0');
 }, 1000);
+    document.getElementById('paymentForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const formData = new FormData();
+    formData.append('name', document.getElementById('customerName').value);
+    formData.append('phone', document.getElementById('customerPhone').value);
+    formData.append('email', document.getElementById('customerEmail').value);
+    formData.append('utr', document.getElementById('customerUtr').value);
+
+    alert('Payment verified! Generating your watermarked e-book, please wait...');
+
+    try {
+        const response = await fetch('https://rasoi-backend-vwjd.onrender.com/generate-book', {
+            method: 'POST',
+            body: formData
+        });
+
+        if (response.ok) {
+            const blob = await response.blob();
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'The_Student_Rasoi.pdf';
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+        } else {
+            alert('Something went wrong. Please check your UTR or contact support.');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Server error. Please try again in a few seconds.');
+    }
+});
+    
 </script>
 </body>
 </html>
